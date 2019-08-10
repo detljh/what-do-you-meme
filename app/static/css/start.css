@@ -10,7 +10,7 @@
     opacity: 0.2;
 }
 
-.hovereffect:hover .overlay-wow {
+.hovereffect:hover .overlay-shocked {
     opacity: 0.2;
 }
 
@@ -67,7 +67,7 @@ background-color: red;
 transition:all .4s ease-in-out
 }
 
-.hovereffect .overlay-wow {
+.hovereffect .overlay-shocked {
 width:100%;
 height:100%;
 position:absolute;

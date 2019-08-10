@@ -3,6 +3,7 @@
 {% block content %}
     <head>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/start.css') }}">
+        <script type="text/javascript" src="{{ url_for('static', filename='js/start.js') }}"></script>
     </head>
     <div class="container pt-5">
         <p class="h3 mb-3 font-weight-normal">{{ article[0] }}</p>
@@ -15,34 +16,34 @@
         <div class="row">
             <div class="col-sm">
                 <div class="hovereffect">
-                    <input type="image" src="{{ src }}" class="img-fluid rounded responsive" alt="happy">
+                    <input type="image" src="{{ src_happy }}" class="img-fluid rounded responsive" alt="happy">
                     <input type="button" class="overlay-happy">
                 </div>
             </div>
             <div class="col-sm">
                 <div class="hovereffect">
-                    <input type="image" src="{{ src }}" class="img-fluid rounded responsive" alt="sad">
+                    <input type="image" src="{{ src_sad }}" class="img-fluid rounded responsive" alt="sad">
                     <input type="button" class="overlay-sad">
                 </div>
             </div>
 
             <div class="col-sm">
                 <div class="hovereffect">
-                    <input type="image" src="{{ src }}" class="img-fluid rounded responsive" alt="angry">
+                    <input type="image" src="{{ src_angry }}" class="img-fluid rounded responsive" alt="angry">
                     <input type="button" class="overlay-angry">
                 </div>
             </div>
 
             <div class="col-sm">
                 <div class="hovereffect">
-                    <input type="image" src="{{ src }}" class="img-fluid rounded responsive" alt="wow">
-                    <input type="button" class="overlay-wow">
+                    <input type="image" src="{{ src_shocked }}" class="img-fluid rounded responsive" alt="shocked">
+                    <input type="button" class="overlay-shocked">
                 </div>
             </div>
 
             <div class="col-sm">
                 <div class="hovereffect">
-                    <input type="image" src="{{ src }}" class="img-fluid rounded responsive" alt="thinking">
+                    <input type="image" src="{{ src_thinking }}" class="img-fluid rounded responsive" alt="thinking">
                     <input type="button" class="overlay-thinking">
                 </div>
             </div>
