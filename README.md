@@ -15,4 +15,4 @@ Install appropriate depedencies
 
 Run `python3 meme_app.py` to execute app. 
 
-It would run on localhost:8080. 
+It would run on `localhost:8080`. 
