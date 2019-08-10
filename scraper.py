@@ -1,15 +1,8 @@
-from selenium import webdriver
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.common.by import By
-from selenium.common.exceptions import TimeoutException
-
 from bs4 import BeautifulSoup
-import urllib.request
+import requests
 
-class MemeScraper(object):
-    def __init__ (self, url):
-        self.url = "https://memeful.com/generator"
+r = requests.get("https://memeful.com/generator")
+html_bytes = r.text
 
-    def __repr__():
-        return self.url
+soup = BeautifulSoup(html_bytes, features="lxml")
+search = soup.find("div", {'id': "search-div"})

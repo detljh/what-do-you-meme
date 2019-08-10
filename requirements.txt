@@ -3,3 +3,4 @@ pycrypto
 selenium
 bs4
 flask
+requests
