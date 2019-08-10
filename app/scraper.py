@@ -10,9 +10,14 @@ class NewsScraper():
         self.soup = BeautifulSoup(data,"lxml")
     
     def scrape_headline_title(self):
-        title_text = self.soup.find_all("h2", {"class": "tge-cardv2_title"})
-        return [i.text for i in title_text]
+        latest_news = self.soup.find("div", {"class": "tgs-mosaicv2-paddedcontainer"})
+        new_soup = BeautifulSoup(latest_news.text, "lxml")
+        title = list(map(lambda x: x.strip(), latest_news.text.replace("\t", " ").split("\n")))[1:][::3][:-1]
+        return title
 
     def scrape_content(self):
-        content_text = self.soup.find_all("p", {"class": "tge-cardv2_standfirst"})
-        return [i.text for i in content_text]
+        latest_news = self.soup.find("div", {"class": "tgs-mosaicv2-paddedcontainer"})
+        new_soup = BeautifulSoup(latest_news.text, "lxml")
+        content = list(map(lambda x: x.strip(), latest_news.text.replace("\t", " ").split("\n")))[2:][::3]
+        print (content)
+        return content
