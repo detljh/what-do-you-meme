@@ -1,16 +1,51 @@
-<!--<img src="{{ src }}" alt="image"> -->
-
 {% extends "top.html" %}
 
 {% block content %}
-<div class="text-center pt-5">
- <div class="container-fluid" class="text-center" align="center">
-  <h3 class="h3 font-weight-normal mb-3"> Start meme-ing headlines </h3>
-  <img src="{{ image_src }}" alt="image" width="700" height="400" class="mb-3">
-  <br>
-  <a href="{{ url_for('start') }}" class="text-center ml-2 btn btn-primary">
-   <button class="btn btn-lg btn-primary" type="submit"> Meme away! </button>
- </a>
- </div>
-</div>
+    <head>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    </head>
+    <div class="container">
+        <p>{{ article }}</p>
+    </div>
+    <div class="container">
+        <div class="memes">
+        <div class="row">
+            <div class="col-sm">
+                <div class="hovereffect">
+                    <input type="image" src="{{ src }}" class="img-fluid rounded responsive" alt="happy">
+                    <div class="overlay-happy"></div>
+                </div>
+            </div>
+
+            <div class="col-sm">
+                <div class="hovereffect">
+                    <input type="image" src="{{ src }}" class="img-fluid rounded responsive" alt="sad">
+                    <div class="overlay-sad"></div>
+                </div>
+            </div>
+
+            <div class="col-sm">
+                <div class="hovereffect">
+                    <input type="image" src="{{ src }}" class="img-fluid rounded responsive" alt="angry">
+                    <div class="overlay-angry"></div>
+                </div>
+            </div>
+
+            <div class="col-sm">
+                <div class="hovereffect">
+                    <input type="image" src="{{ src }}" class="img-fluid rounded responsive" alt="wow">
+                    <div class="overlay-wow"></div>
+                </div>
+            </div>
+
+            <div class="col-sm">
+                <div class="hovereffect">
+                    <input type="image" src="{{ src }}" class="img-fluid rounded responsive" alt="thinking">
+                    <div class="overlay-thinking"></div>
+                </div>
+            </div>
+
+        </div>
+        </div>
+    </div>
 {% endblock %}
