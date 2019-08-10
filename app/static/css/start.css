@@ -93,6 +93,14 @@ background-color: black;
 transition:all .4s ease-in-out
 }
 
+.skip {
+width: 10%; 
+height: 5%;
+position:fixed;
+overflow:hidden;
+
+}
+
 .hovereffect img {
 display:block;
 position:relative;

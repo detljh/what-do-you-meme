@@ -25,7 +25,7 @@ def start():
         return redirect("/end")
     
     return render_template("start.html", src_happy=get_image('happy'), src_sad=get_image('sad'), src_angry=get_image('angry'), \
-    src_shocked=get_image('shocked'), src_thinking=get_image('thinking'), article=[title[post_number], content[post_number]])
+    src_shocked=get_image('shocked'), src_thinking=get_image('thinking'), skip="/static/images/skip.png", article=[title[post_number], content[post_number]])
 
 def get_image(type):
     image_dir = os.listdir(os.path.join(Config.IMAGE_FOLDER, type))
