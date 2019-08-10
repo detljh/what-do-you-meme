@@ -96,6 +96,7 @@ transition:all .4s ease-in-out
 .skip {
 width: 10%; 
 height: 5%;
+bottom: 100;
 position:fixed;
 overflow:hidden;
 
