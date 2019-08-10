@@ -42,3 +42,8 @@ def increment():
 def end():
     return render_template("end.html")
 
+@app.route('/restart', methods=['GET', 'POST'])
+def restart():
+    global post_number
+    post_number = 0
+    return redirect(url_for("start"))
