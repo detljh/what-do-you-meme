@@ -20,3 +20,8 @@ class NewsScraper():
         new_soup = BeautifulSoup(latest_news.text, "lxml")
         content = list(map(lambda x: x.strip(), latest_news.text.replace("\t", " ").split("\n")))[2:][::3]
         return content
+
+import spacy
+
+nlp = spacy.load("en_core_web_sm")
+doc = nlp("China tells UK to back off over Hong Kong")

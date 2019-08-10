@@ -111,3 +111,4 @@ webencodings==0.5.1
 Werkzeug==0.15.5
 widgetsnbextension==3.4.2
 WTForms==2.2.1
+spacy

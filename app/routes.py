@@ -7,7 +7,15 @@ from config import Config
 import os
 import time
 import random
+import spacy
 
+tags = {
+    "crime": ["killed","murder", "kidnap", "blood", "abduction", "abducted", "rape", "crash", "accident", "blast"],
+    "calamity": ["floods", "typhoon", "tornado", "earthquake", "volcano", "cyclone", "wind", "turbulence", "dead", "windy"],
+    "politics": ["trump", "us", "china", "uk", "govt", "hong kong", "yemen", "aden"],
+}
+
+nlp = spacy.load("en_core_web_sm")
 post_number = 0
 scraper = NewsScraper()
 title, content = scraper.scrape_headline_title(), scraper.scrape_content()
@@ -23,9 +31,18 @@ def start():
     title, content = scraper.scrape_headline_title(), scraper.scrape_content()
     if post_number >= len(title):
         return redirect("/end")
-    
+    tokens = nlp(title[post_number])
+    doc = list(map(lambda x: x.text, filter(lambda x: x.pos_ in ["NOUN", "PROPN", "VERB"], tokens)))
+    tag = "NONE"
+    for key in tags.keys():
+        print(key)
+        for i in range(len(doc)):
+            if doc[i].lower() in tags[key]:
+                tag = key
+                return render_template("start.html", src_happy=get_image('happy'), src_sad=get_image('sad'), src_angry=get_image('angry'), \
+                src_shocked=get_image('shocked'), src_thinking=get_image('thinking'), article=[title[post_number], content[post_number], tag])
     return render_template("start.html", src_happy=get_image('happy'), src_sad=get_image('sad'), src_angry=get_image('angry'), \
-    src_shocked=get_image('shocked'), src_thinking=get_image('thinking'), article=[title[post_number], content[post_number]])
+    src_shocked=get_image('shocked'), src_thinking=get_image('thinking'), article=[title[post_number], content[post_number], tag])
 
 def get_image(type):
     image_dir = os.listdir(os.path.join(Config.IMAGE_FOLDER, type))
