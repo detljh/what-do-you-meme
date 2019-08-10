@@ -1,11 +1,18 @@
 {% extends "top.html" %}
 
-{% block content %}
-<div class="container">
+
+    {% block content %}
+    <div class="container">
+        <br>
+        <h3>Community Reactions to Article Themes</h3>
+        <hr>
+    <div class="row">
     {% for tag in stats %}
-        <tr>
-            <h4>{{ tag.news_tag }}: </h4>
-            <p>
+        <div class="mt-4 col-sm">
+            <div class="card" style="width:18rem">
+                <div class="card-body">
+            <h5 class="card-title">{{ tag.news_tag }} </h5>
+            <p class="card-text">
                 Happy reacts: {{ tag.happy }}
                 <br>
                 Sad reacts: {{ tag.sad }}
@@ -15,12 +22,16 @@
                 Shocked reacts: {{ tag.shocked }}
                 <br>
                 Thinking reacts: {{ tag.thinking }}
+                
             </p>
-            
+            </div>
+            </div>
+        </div>
         
-        </tr>
     {% endfor %}
-    
+    </div>
+    <br>
     <a href="{{ url_for('restart') }}" class="btn btn-primary">Start Again</a>
-</div>
+    </div>
 {% endblock %}
+
