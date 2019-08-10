@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/Users/mospy26/Documents/what-do-you-meme/venv"
+VIRTUAL_ENV="/home/ec2-user/environment/what-do-you-meme/venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
