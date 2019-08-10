@@ -24,3 +24,4 @@ class MemeCard(db.Model):
 class HappyMeme(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     image_path = db.Column(db.String(300))
+    
