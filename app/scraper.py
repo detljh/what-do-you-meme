@@ -19,5 +19,4 @@ class NewsScraper():
         latest_news = self.soup.find("div", {"class": "tgs-mosaicv2-paddedcontainer"})
         new_soup = BeautifulSoup(latest_news.text, "lxml")
         content = list(map(lambda x: x.strip(), latest_news.text.replace("\t", " ").split("\n")))[2:][::3]
-        print (content)
         return content
