@@ -8,6 +8,8 @@ import os
 import time
 
 post_number = 0
+scraper = NewsScraper()
+title, content = scraper.scrape_headline_title(), scraper.scrape_content()
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
@@ -17,6 +19,16 @@ def login():
 @app.route('/start', methods=['GET', 'POST'])
 def start():
     filepath = "/static/images/intro.jpg"
-    scraper = NewsScraper()
-    title, content = scraper.scrape_headline_title(), scraper.scrape_content()
-    return render_template("start.html", src=filepath, article=[title[0], content[0]])
+    if post_number >= len(title):
+        return redirect("/end")
+    return render_template("start.html", src=filepath, article=[title[post_number], content[post_number]])
+
+@app.route('/increment', methods=["GET", "POST"])
+def increment():
+    global post_number
+    post_number += 1
+    return redirect(url_for("start"))
+
+@app.route('/end', methods=['GET', 'POST'])
+def end():
+    return render_template("end.html")
