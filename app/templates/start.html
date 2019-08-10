@@ -43,8 +43,10 @@
 
             <div class="col-sm">
                 <div class="hovereffect">
-                    <input type="image" src="{{ src_thinking }}" class="img-fluid rounded responsive" alt="thinking">
-                    <input type="button" class="overlay-thinking">
+                    <a href="{{ url_for('increment') }}">
+                        <input type="image" src="{{ src_thinking }}" class="img-fluid rounded responsive" alt="thinking">
+                        <input type="button" class="overlay-thinking">
+                    </a>
                 </div>
             </div>
 
