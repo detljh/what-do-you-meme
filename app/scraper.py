@@ -7,8 +7,8 @@ from selenium.webdriver.common.by import By
 import time
 
 class NewsScraper():
-    def __init__(self):
-        self.driver_location = "../venv/chromedriver"
+    def __init__(self, location):
+        self.driver_location = location
         self.browser = "https://www.dailytelegraph.com.au/news/breaking-news"
     
     def scrape_headline_and_content(self):
@@ -25,12 +25,12 @@ class NewsScraper():
         time.sleep(1)
         self.driver.close()
 
-scraper = NewsScraper()
-title, content = scraper.scrape_headline_and_content()
-for i in zip(title, content):
-    print(i[0].text, i[1].text)
+# scraper = NewsScraper()
+# title, content = scraper.scrape_headline_and_content()
+# for i in zip(title, content):
+#     print(i[0].text, i[1].text)
 
-scraper.close()
+# scraper.close()
 
 # option = webdriver.ChromeOptions()
 # option.add_argument(" - incognito")

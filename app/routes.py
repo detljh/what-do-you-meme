@@ -1,10 +1,13 @@
 from flask import *
 from app import app
+from app.scraper import NewsScraper
 from app.forms import LoginForm
 from app.models import *
 from config import Config
 import os
+import time
 
+post_number = 0
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
@@ -24,4 +27,10 @@ def login():
 @app.route('/start', methods=['GET', 'POST'])
 def start():
     filepath = "/static/images/intro.jpg"
-    return render_template("start.html", src=filepath, article="news article")
+    scraper = NewsScraper("./chromedriver")
+    title, content = scraper.scrape_headline_and_content()
+    title_text = [i.text for i in title]
+    content_text = [i.text for i in content]
+    time.sleep(1)
+    scraper.close()
+    return render_template("start.html", src=filepath, article=[title_text[0], content_text[0]])
