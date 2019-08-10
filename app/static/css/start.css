@@ -95,10 +95,12 @@ transition:all .4s ease-in-out
 
 .skip {
 width: 10%; 
-height: 5%;
+height: auto;
 bottom: 100;
 position:fixed;
+display: block;
 overflow:hidden;
+text-align:center;
 
 }
 
