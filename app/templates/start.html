@@ -1,5 +1,51 @@
 {% extends "top.html" %}
 
 {% block content %}
-    <h1>Sign In</h1>
+    <head>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/start.css') }}">
+    </head>
+    <div class="container">
+        <p>{{ article }}</p>
+    <hr>
+    </div>
+    <div class="container">
+        <div class="memes">
+        <div class="row">
+            <div class="col-sm">
+                <div class="hovereffect">
+                    <input type="image" src="{{ src }}" class="img-fluid rounded responsive" alt="happy">
+                    <input type="button" class="overlay-happy">
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="hovereffect">
+                    <input type="image" src="{{ src }}" class="img-fluid rounded responsive" alt="sad">
+                    <input type="button" class="overlay-sad">
+                </div>
+            </div>
+
+            <div class="col-sm">
+                <div class="hovereffect">
+                    <input type="image" src="{{ src }}" class="img-fluid rounded responsive" alt="angry">
+                    <input type="button" class="overlay-angry">
+                </div>
+            </div>
+
+            <div class="col-sm">
+                <div class="hovereffect">
+                    <input type="image" src="{{ src }}" class="img-fluid rounded responsive" alt="wow">
+                    <input type="button" class="overlay-wow">
+                </div>
+            </div>
+
+            <div class="col-sm">
+                <div class="hovereffect">
+                    <input type="image" src="{{ src }}" class="img-fluid rounded responsive" alt="thinking">
+                    <input type="button" class="overlay-thinking">
+                </div>
+            </div>
+
+        </div>
+        </div>
+    </div>
 {% endblock %}

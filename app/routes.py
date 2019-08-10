@@ -23,5 +23,5 @@ def login():
 
 @app.route('/start', methods=['GET', 'POST'])
 def start():
-    filepath = "/static/images/happy/dicaprio3-583e33155f9b58d5b19e3a00.jpg"
-    return render_template("home.html", src=filepath)
+    filepath = "/static/images/intro.jpg"
+    return render_template("start.html", src=filepath, article="news article")
