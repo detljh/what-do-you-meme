@@ -1,9 +1,26 @@
 {% extends "top.html" %}
 
 {% block content %}
-
-BYEE
 <div class="container">
+    {% for tag in stats %}
+        <tr>
+            <h4>{{ tag.news_tag }}: </h4>
+            <p>
+                Happy reacts: {{ tag.happy }}
+                <br>
+                Sad reacts: {{ tag.sad }}
+                <br>
+                Angry reacts: {{ tag.angry }}
+                <br>
+                Shocked reacts: {{ tag.shocked }}
+                <br>
+                Thinking reacts: {{ tag.thinking }}
+            </p>
+            
+        
+        </tr>
+    {% endfor %}
+    
     <a href="{{ url_for('restart') }}" class="btn btn-primary">Start Again</a>
 </div>
 {% endblock %}

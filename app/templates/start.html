@@ -17,7 +17,7 @@
         <div class="row">
             <div class="col-sm">
                 <div class="hovereffect">
-                    <a href="{{ url_for('increment', react=happy, tag=news_tag) }}">
+                    <a href="{{ url_for('increment', react_type='happy', tag=article[2]) }}">
                         <input type="image" src="{{ src_happy }}" class="img-fluid rounded responsive" alt="happy">
                         <input type="button" class="overlay-happy">
                     </a>
@@ -25,7 +25,7 @@
             </div>
             <div class="col-sm">
                 <div class="hovereffect">
-                    <a href="{{ url_for('increment', react=sad, tag=news_tag) }}">
+                    <a href="{{ url_for('increment', react_type='sad', tag=article[2]) }}">
                         <input type="image" src="{{ src_sad }}" class="img-fluid rounded responsive" alt="sad">
                         <input type="button" class="overlay-sad">
                     </a>
@@ -34,16 +34,16 @@
 
             <div class="col-sm">
                 <div class="hovereffect">
-                    <form action="{{ url_for('increment', react=angry, tag=news_tag) }}">
+                    <a href="{{ url_for('increment', react_type='angry', tag=article[2]) }}">
                         <input type="image" src="{{ src_angry }}" class="img-fluid rounded responsive" alt="angry">
                         <input type="button" class="overlay-angry">
-                    </form>
+                    </a>
                 </div>
             </div>
 
             <div class="col-sm">
                 <div class="hovereffect">
-                    <a href="{{ url_for('increment', react=shocked, tag=news_tag) }}">
+                    <a href="{{ url_for('increment', react_type='shocked', tag=article[2]) }}">
                         <input type="image" src="{{ src_shocked }}" class="img-fluid rounded responsive" alt="shocked">
                         <input type="button" class="overlay-shocked">
                     </a>
@@ -52,7 +52,7 @@
 
             <div class="col-sm">
                 <div class="hovereffect">
-                    <a href="{{ url_for('increment', react=thinking, tag=news_tag) }}">
+                    <a href="{{ url_for('increment', react_type='thinking', tag=article[2]) }}">
                         <input type="image" src="{{ src_thinking }}" class="img-fluid rounded responsive" alt="thinking">
                         <input type="button" class="overlay-thinking">
                     </a>
@@ -65,7 +65,7 @@
     
     <div class="container">
         <div class="col-sm">
-            <a href="{{ url_for('increment', react=skip, tag=news_tag) }}" class="btn btn-primary skip">SKIP</a>
+            <a href="{{ url_for('increment', react_type='skip', tag=article[2]) }}" class="btn btn-primary skip">SKIP</a>
         </div>
     </div>
 {% endblock %}
