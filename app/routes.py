@@ -10,7 +10,7 @@ import random
 import spacy
 
 tags = {
-    "crime": ["killed","murder", "kidnap", "blood", "abduction", "abducted", "rape", "crash", "accident", "blast"],
+    "crime": ["killed","murder", "kidnap", "blood", "abduction", "abducted", "rape", "crash", "accident", "blast", "abuse", "beat", "chase", "gun", "jail", "prison", "punishment", "raid", "weapon"],
     "calamity": ["floods", "typhoon", "tornado", "earthquake", "volcano", "cyclone", "wind", "turbulence", "dead", "windy"],
     "politics": ["trump", "us", "china", "uk", "govt", "hong kong", "yemen", "aden"],
 }
