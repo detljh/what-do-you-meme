@@ -10,7 +10,7 @@ import os
 def login():
     #form = LoginForm()
     image = "/static/images/intro.jpg"
-    return render_template('home.html', title="Meme the news", image_src=image)
+    return render_template('login.html', title="Meme the news", image_src=image)
 
 # @app.route('/home', methods=['GET', 'POST'])
 # def home():
@@ -23,4 +23,5 @@ def login():
 
 @app.route('/start', methods=['GET', 'POST'])
 def start():
-    return render_template("start.html")
+    filepath = "/static/images/happy/dicaprio3-583e33155f9b58d5b19e3a00.jpg"
+    return render_template("home.html", src=filepath)
