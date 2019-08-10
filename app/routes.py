@@ -7,15 +7,14 @@ from config import Config
 import os
 import time
 import random
-import spacy
 
 tags = {
-    "crime": ["killed","murder", "kidnap", "blood", "abduction", "abducted", "rape", "crash", "accident", "blast", "abuse", "beat", "chase", "gun", "jail", "prison", "punishment", "raid", "weapon"],
+    "crime": ["killed", "murder", "kidnap", "blood", "abduction", "abducted", "rape", "crash", "accident", "blast", "abuse", "beat", "chase", "gun", "jail", "prison", "punishment", "raid", "weapon"],
     "calamity": ["floods", "typhoon", "tornado", "earthquake", "volcano", "cyclone", "wind", "turbulence", "dead", "windy"],
     "politics": ["trump", "us", "china", "uk", "govt", "hong kong", "yemen", "aden"],
 }
 
-nlp = spacy.load("en_core_web_sm")
+
 post_number = 0
 scraper = NewsScraper()
 title, content = scraper.scrape_headline_title(), scraper.scrape_content()
@@ -31,28 +30,63 @@ def start():
     title, content = scraper.scrape_headline_title(), scraper.scrape_content()
     if post_number >= len(title):
         return redirect("/end")
-    tokens = nlp(title[post_number])
-    doc = list(map(lambda x: x.text, filter(lambda x: x.pos_ in ["NOUN", "PROPN", "VERB"], tokens)))
-    tag = "NONE"
-    for key in tags.keys():
-        print(key)
-        for i in range(len(doc)):
-            if doc[i].lower() in tags[key]:
-                tag = key
-                return render_template("start.html", src_happy=get_image('happy'), src_sad=get_image('sad'), src_angry=get_image('angry'), \
-                src_shocked=get_image('shocked'), src_thinking=get_image('thinking'), article=[title[post_number], content[post_number], tag])
+        
+    for k,v in tags.items():
+        if content[post_number] in v:
+            news_tag = k
+            return render_template("start.html", src_happy=get_image('happy'), src_sad=get_image('sad'), src_angry=get_image('angry'), \
+                src_shocked=get_image('shocked'), src_thinking=get_image('thinking'), article=[title[post_number], content[post_number]], news_tag=news_tag)
+        
+    # tokens = nlp(title[post_number])
+    # doc = list(map(lambda x: x.text, filter(lambda x: x.pos_ in ["NOUN", "PROPN", "VERB"], tokens)))
+    # tag = "NONE"
+    # for key in tags.keys():
+    #     print(key)
+    #     for i in range(len(doc)):
+    #         if doc[i].lower() in tags[key]:
+    #             tag = key
+    #             return render_template("start.html", src_happy=get_image('happy'), src_sad=get_image('sad'), src_angry=get_image('angry'), \
+    #             src_shocked=get_image('shocked'), src_thinking=get_image('thinking'), article=[title[post_number], content[post_number], tag])
     return render_template("start.html", src_happy=get_image('happy'), src_sad=get_image('sad'), src_angry=get_image('angry'), \
-    src_shocked=get_image('shocked'), src_thinking=get_image('thinking'), article=[title[post_number], content[post_number], tag])
+    src_shocked=get_image('shocked'), src_thinking=get_image('thinking'), article=[title[post_number], content[post_number], "None"])
 
 def get_image(type):
     image_dir = os.listdir(os.path.join(Config.IMAGE_FOLDER, type))
     image = '/static/images/' + type + '/' + random.choice(image_dir)
     return image
 
-@app.route('/increment', methods=["GET", "POST"])
-def increment():
+@app.route('/increment/<react>/<tag>', methods=["GET", "POST"])
+def increment(react, tag):
     global post_number
     post_number += 1
+    print(request.get.args(react), tag)
+    if react_type != None:
+        s = Stat()
+        
+        s = Stat.query.filter_by(news_tag=tag).first()
+        new = False
+        
+        if s is None:
+            s = Stat()
+            s.news_tag = tag
+            new = True
+        
+        if react_type == 'happy':
+            s.happy += 1
+        elif react_type == 'sad':
+            s.sad += 1
+        elif react_type == 'angry':
+            s.angry += 1
+        elif react_type == 'shocked':
+            s.shocked += 1
+        elif react_type == 'thinking':
+            s.thinking += 1
+        
+        if new:
+            db.session.add(s)
+        
+        db.session.commit()
+                
     return redirect(url_for("start"))
 
 @app.route('/end', methods=['GET', 'POST'])
@@ -64,3 +98,5 @@ def restart():
     global post_number
     post_number = 0
     return redirect(url_for("start"))
+    
+

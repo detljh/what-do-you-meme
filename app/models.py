@@ -25,3 +25,12 @@ class HappyMeme(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     image_path = db.Column(db.String(300))
     
+class Stat(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    news_tag = db.Column(db.String(20), unique=True)
+    happy = db.Column(db.Integer, default=0)
+    sad = db.Column(db.Integer, default=0)
+    angry = db.Column(db.Integer, default=0)
+    shocked = db.Column(db.Integer, default=0)
+    thinking = db.Column(db.Integer, default=0)
+    
